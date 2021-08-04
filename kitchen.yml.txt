@@ -1,0 +1,17 @@
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "chef" {
+    attributes_json = <<EOF
+      {
+        "name": "chef-workstation",
+        "app": {
+          "cluster1": {
+            "nodes": [
+              "webserver1",
+              "webserver2"
+            ]
+          }
+        }
+      }
+  
